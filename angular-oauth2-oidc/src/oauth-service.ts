@@ -563,6 +563,51 @@ export class OAuthService
     }
 
     /**
+     * Uses facebook flow to exchange (facebook) accessToken for an access_token.
+     * @param accessToken
+     * @param grantTypeURL
+     * @param headers Optional additional http-headers.
+     */
+    public fetchTokenUsingFacebookFlow(accessToken: string, grantTypeURL: string, headers: Headers = new Headers()): Promise<object> {
+
+        if (!this.validateUrlForHttps(this.tokenEndpoint)) {
+            throw new Error('tokenEndpoint must use Http. Also check property requireHttps.');
+        }
+
+        return new Promise((resolve, reject) => {
+            let search = new URLSearchParams();
+            search.set('grant_type', grantTypeURL);
+            search.set('client_id', this.clientId);
+            search.set('scope', this.scope);
+            search.set('facebook_access_token', accessToken);
+
+            if (this.dummyClientSecret) {
+                search.set('client_secret', this.dummyClientSecret);
+            }
+
+            headers.set('Content-Type', 'application/x-www-form-urlencoded');
+
+            let params = search.toString();
+
+            this.http.post(this.tokenEndpoint, params, { headers }).map(r => r.json()).subscribe(
+                (tokenResponse) => {
+                    this.debug('tokenResponse', tokenResponse);
+                    this.storeAccessTokenResponse(tokenResponse.access_token, tokenResponse.refresh_token, tokenResponse.expires_in);
+
+                    this.eventsSubject.next(new OAuthSuccessEvent('token_received'));
+                    resolve(tokenResponse);
+                },
+                (err) => {
+                    console.error('Error performing facebook flow', err);
+                    this.eventsSubject.next(new OAuthErrorEvent('token_error', err));
+                    reject(err);
+                }
+            );
+        });
+
+    }
+
+    /**
      * Refreshes the token using a refresh_token.
      * This does not work for implicit flow, b/c
      * there is no refresh_token in this flow.
