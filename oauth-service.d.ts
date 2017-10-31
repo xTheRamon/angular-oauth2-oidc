@@ -117,6 +117,14 @@ export declare class OAuthService extends AuthConfig {
      * @param headers Optional additional http-headers.
      */
     fetchTokenUsingPasswordFlow(userName: string, password: string, headers?: Headers): Promise<object>;
+
+    /**
+     * Uses password flow to exchange userName and password for an access_token.
+     * @param accessToken
+     * @param grantTypeURL
+     * @param headers Optional additional http-headers.
+     */
+    fetchTokenUsingPasswordFlow(accessToken: string, grantTypeURL: string, headers?: Headers): Promise<object>;
     /**
      * Refreshes the token using a refresh_token.
      * This does not work for implicit flow, b/c
