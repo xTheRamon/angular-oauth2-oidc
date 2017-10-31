@@ -124,7 +124,7 @@ export declare class OAuthService extends AuthConfig {
      * @param grantTypeURL
      * @param headers Optional additional http-headers.
      */
-    fetchTokenUsingPasswordFlow(accessToken: string, grantTypeURL: string, headers?: Headers): Promise<object>;
+    fetchTokenUsingFacebookFlow(accessToken: string, grantTypeURL: string, headers?: Headers): Promise<object>;
     /**
      * Refreshes the token using a refresh_token.
      * This does not work for implicit flow, b/c
