@@ -1,7 +1,7 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular/http'), require('rxjs/Observable'), require('rxjs/Subject'), require('rxjs/add/operator/map'), require('rxjs/add/operator/do'), require('rxjs/add/operator/filter'), require('rxjs/add/operator/delay'), require('rxjs/add/operator/first'), require('rxjs/add/operator/toPromise'), require('rxjs/add/operator/publish'), require('rxjs/add/observable/of'), require('rxjs/add/observable/race')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', '@angular/http', 'rxjs/Observable', 'rxjs/Subject', 'rxjs/add/operator/map', 'rxjs/add/operator/do', 'rxjs/add/operator/filter', 'rxjs/add/operator/delay', 'rxjs/add/operator/first', 'rxjs/add/operator/toPromise', 'rxjs/add/operator/publish', 'rxjs/add/observable/of', 'rxjs/add/observable/race'], factory) :
-	(factory((global['angular-oauth2-oidc'] = {}),global._angular_core,global._angular_common,global._angular_http,global.rxjs_Observable,global.rxjs_Subject));
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular/http'), require('rxjs/Observable'), require('rxjs/Subject'), require('rxjs/add/operator/map'), require('rxjs/add/operator/do'), require('rxjs/add/operator/filter'), require('rxjs/add/operator/delay'), require('rxjs/add/operator/first'), require('rxjs/add/operator/toPromise'), require('rxjs/add/operator/publish'), require('rxjs/add/observable/of'), require('rxjs/add/observable/race')) :
+    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', '@angular/http', 'rxjs/Observable', 'rxjs/Subject', 'rxjs/add/operator/map', 'rxjs/add/operator/do', 'rxjs/add/operator/filter', 'rxjs/add/operator/delay', 'rxjs/add/operator/first', 'rxjs/add/operator/toPromise', 'rxjs/add/operator/publish', 'rxjs/add/observable/of', 'rxjs/add/observable/race'], factory) :
+    (factory((global['angular-oauth2-oidc'] = {}),global._angular_core,global._angular_common,global._angular_http,global.rxjs_Observable,global.rxjs_Subject));
 }(this, (function (exports,_angular_core,_angular_common,_angular_http,rxjs_Observable,rxjs_Subject) { 'use strict';
 
 /**
@@ -971,12 +971,12 @@ var OAuthService = (function (_super) {
      */
     OAuthService.prototype.fetchTokenUsingFacebookFlow = function (accessToken, grantTypeURL, headers) {
         var _this = this;
-        if (headers === void 0) { headers = new Headers(); }
+        if (headers === void 0) { headers = new _angular_http.Headers(); }
         if (!this.validateUrlForHttps(this.tokenEndpoint)) {
             throw new Error('tokenEndpoint must use Http. Also check property requireHttps.');
         }
         return new Promise(function (resolve, reject) {
-            var /** @type {?} */ search = new URLSearchParams();
+            var /** @type {?} */ search = new _angular_http.URLSearchParams();
             search.set('grant_type', grantTypeURL);
             search.set('client_id', _this.clientId);
             search.set('scope', _this.scope);
@@ -992,7 +992,7 @@ var OAuthService = (function (_super) {
                 _this.eventsSubject.next(new OAuthSuccessEvent('token_received'));
                 resolve(tokenResponse);
             }, function (err) {
-                console.error('Error performing facebook flow', err);
+                console.error('Error performing password flow', err);
                 _this.eventsSubject.next(new OAuthErrorEvent('token_error', err));
                 reject(err);
             });
