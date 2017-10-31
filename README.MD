@@ -7,7 +7,7 @@ Support for OAuth 2 and OpenId Connect (OIDC) in Angular.
 ## Credits
 
 - [generator-angular2-library](https://github.com/jvandemo/generator-angular2-library) for scaffolding a angular library
-- [jsrsasign](https://kjur.github.io/jsrsasign/) for validating token signature and for hashing
+- [jsrasign](https://kjur.github.io/jsrsasign/) for validating token signature and for hashing
 - [Identity Server](https://github.com/identityserver) (used for Testing with an .NET/.NET Core Backend)
 - [Keycloak (Redhad)](http://www.keycloak.org/) for Testing with Java
 
@@ -21,7 +21,7 @@ https://manfredsteyer.github.io/angular-oauth2-oidc/angular-oauth2-oidc/docs/
 
 ## Tested Environment
 
-Successfully tested with the Angular 2 and 4 and its Router, PathLocationStrategy as well as HashLocationStrategy and CommonJS-Bundling via webpack. At server side we've used IdentityServer (.NET/ .NET Core) and Redhat's Keycloak (Java).
+Successfully tested with Angular 4 and its Router, PathLocationStrategy as well as HashLocationStrategy and CommonJS-Bundling via webpack. At server side we've used IdentityServer (.NET/ .NET Core) and Redhat's Keycloak (Java).
 
 ## New Features in Version 2.1
 - New Config API (the original one is still supported)
@@ -111,8 +111,6 @@ This also allows for single sign on as well as single sign off.
 
 To configure the library the following sample uses the new configuration API introduced with Version 2.1.
 Hence, The original API is still supported.
-
-Add a file in the root of `app` called `auth.config.ts` and paste in the following code:
 
 ```TypeScript
 import { AuthConfig } from 'angular-oauth2-oidc';
@@ -215,7 +213,7 @@ The following snippet contains the template for the login page:
 </div>
 ```
 
-### Calling a Web API with an OAuth-Token
+### Calling a Web API with an Access Token
 
 Pass this Header to the used method of the ``Http``-Service within an Instance of the class ``Headers``:
 
