@@ -1,27 +1,25 @@
 {
-  "_from": "angular-oauth2-oidc",
+  "_from": "git+https://github.com/xTheRamon/angular-oauth2-oidc.git",
   "_id": "angular-oauth2-oidc@2.1.8",
   "_inBundle": false,
-  "_integrity": "sha1-ppJN15YWOOZUvWCQ20034SX5ZT0=",
+  "_integrity": "sha1-3X4e3fRPdtIUDcry9wYr7GIJvwY=",
   "_location": "/angular-oauth2-oidc",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "angular-oauth2-oidc",
-    "name": "angular-oauth2-oidc",
-    "escapedName": "angular-oauth2-oidc",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+    "type": "git",
+    "raw": "https://github.com/xTheRamon/angular-oauth2-oidc.git",
+    "rawSpec": "https://github.com/xTheRamon/angular-oauth2-oidc.git",
+    "saveSpec": "git+https://github.com/xTheRamon/angular-oauth2-oidc.git",
+    "fetchSpec": "https://github.com/xTheRamon/angular-oauth2-oidc.git",
+    "gitCommittish": "master"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/angular-oauth2-oidc/-/angular-oauth2-oidc-2.1.8.tgz",
+  "_resolved": "git+https://github.com/xTheRamon/angular-oauth2-oidc.git#e76f2b15f292c13bbe1273badd747d32c9c87759",
   "_shasum": "a6924dd7961638e654bd6090db4d37e125f9653d",
-  "_spec": "angular-oauth2-oidc",
+  "_spec": "https://github.com/xTheRamon/angular-oauth2-oidc.git",
   "_where": "/Users/ramon/Documents/Projects/SAM",
   "author": {
     "name": "ManfredSteyer",

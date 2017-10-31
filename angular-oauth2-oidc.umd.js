@@ -962,6 +962,42 @@ var OAuthService = (function (_super) {
             });
         });
     };
+
+    /**
+     * Uses facebook flow to exchange (facebook) accessToken for an access_token.
+     * @param accessToken
+     * @param grantTypeURL
+     * @param headers Optional additional http-headers.
+     */
+    OAuthService.prototype.fetchTokenUsingFacebookFlow = function (accessToken, grantTypeURL, headers) {
+        var _this = this;
+        if (headers === void 0) { headers = new Headers(); }
+        if (!this.validateUrlForHttps(this.tokenEndpoint)) {
+            throw new Error('tokenEndpoint must use Http. Also check property requireHttps.');
+        }
+        return new Promise(function (resolve, reject) {
+            var /** @type {?} */ search = new URLSearchParams();
+            search.set('grant_type', grantTypeURL);
+            search.set('client_id', _this.clientId);
+            search.set('scope', _this.scope);
+            search.set('facebook_access_token', accessToken);
+            if (_this.dummyClientSecret) {
+                search.set('client_secret', _this.dummyClientSecret);
+            }
+            headers.set('Content-Type', 'application/x-www-form-urlencoded');
+            var /** @type {?} */ params = search.toString();
+            _this.http.post(_this.tokenEndpoint, params, { headers: headers }).map(function (r) { return r.json(); }).subscribe(function (tokenResponse) {
+                _this.debug('tokenResponse', tokenResponse);
+                _this.storeAccessTokenResponse(tokenResponse.access_token, tokenResponse.refresh_token, tokenResponse.expires_in);
+                _this.eventsSubject.next(new OAuthSuccessEvent('token_received'));
+                resolve(tokenResponse);
+            }, function (err) {
+                console.error('Error performing facebook flow', err);
+                _this.eventsSubject.next(new OAuthErrorEvent('token_error', err));
+                reject(err);
+            });
+        });
+    };
     /**
      * Refreshes the token using a refresh_token.
     This does not work for implicit flow, b/c
