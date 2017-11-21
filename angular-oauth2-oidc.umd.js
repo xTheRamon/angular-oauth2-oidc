@@ -932,7 +932,7 @@ var OAuthService = (function (_super) {
      * @param {?=} headers
      * @return {?}
      */
-    var bogusEncoder = {encodeKey: function(val) {return val;}, encodeValue(val) {return val;}};
+    var bogusEncoder = {encodeKey: function(val) {return encodeURIComponent(val);}, encodeValue(val) {return encodeURIComponent(val);}};
     OAuthService.prototype.fetchTokenUsingPasswordFlow = function (userName, password, headers) {
         var _this = this;
         if (headers === void 0) { headers = new _angular_http.Headers(); }
