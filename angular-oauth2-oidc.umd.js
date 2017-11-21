@@ -932,6 +932,7 @@ var OAuthService = (function (_super) {
      * @param {?=} headers
      * @return {?}
      */
+    var bogusEncoder = {encodeKey: function(val) {return val;}, encodeValue(val) {return val;}};
     OAuthService.prototype.fetchTokenUsingPasswordFlow = function (userName, password, headers) {
         var _this = this;
         if (headers === void 0) { headers = new _angular_http.Headers(); }
@@ -939,7 +940,7 @@ var OAuthService = (function (_super) {
             throw new Error('tokenEndpoint must use Http. Also check property requireHttps.');
         }
         return new Promise(function (resolve, reject) {
-            var /** @type {?} */ search = new _angular_http.URLSearchParams();
+            var /** @type {?} */ search = new _angular_http.URLSearchParams('', bogusEncoder);
             search.set('grant_type', 'password');
             search.set('client_id', _this.clientId);
             search.set('scope', _this.scope);
