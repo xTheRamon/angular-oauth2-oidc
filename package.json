@@ -1,6 +1,6 @@
 {
   "_from": "git+https://github.com/xTheRamon/angular-oauth2-oidc.git",
-  "_id": "angular-oauth2-oidc@2.1.8",
+  "_id": "angular-oauth2-oidc@2.1.9",
   "_inBundle": false,
   "_integrity": "sha1-3X4e3fRPdtIUDcry9wYr7GIJvwY=",
   "_location": "/angular-oauth2-oidc",
@@ -47,7 +47,7 @@
     "@angular/core": "^5.0.0",
     "@angular/http": "^5.0.0",
     "@angular/common": "^5.0.0",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.5.0",
     "zone.js": "^0.8.4"
   },
   "repository": {
@@ -55,5 +55,5 @@
     "url": "git+https://github.com/manfredsteyer/angular-oauth2-oidc.git"
   },
   "typings": "angular-oauth2-oidc.d.ts",
-  "version": "2.1.8"
+  "version": "2.1.9"
 }
