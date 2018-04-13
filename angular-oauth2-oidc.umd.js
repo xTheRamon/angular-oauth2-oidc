@@ -1785,6 +1785,21 @@ var OAuthService = (function (_super) {
         }
         return false;
     };
+
+    /**
+     * Checkes, whether there is a valid refresh_token.
+     * @return {?}
+     */
+    OAuthService.prototype.hasValidRefreshToken = function () {
+        if (this.getAccessToken())
+        {
+            var refreshToken = this._storage.getItem('refresh_token');
+            if (refreshToken && refreshToken.length > 0) {
+                return true;
+            }
+        }
+        return false;
+    };
     
     /**
      * Checkes, whether there is a valid id_token.

@@ -213,6 +213,10 @@ export declare class OAuthService extends AuthConfig {
     */
     hasValidAccessToken(): boolean;
     /**
+     * Checkes, whether there is a valid refresh_token.
+    */
+    hasValidRefreshToken(): boolean;
+    /**
      * Checkes, whether there is a valid id_token.
     */
     hasValidIdToken(): boolean;
